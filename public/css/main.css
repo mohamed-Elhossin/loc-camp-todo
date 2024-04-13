@@ -1,0 +1,70 @@
+:root {
+    --main-color: #00C4B3;
+    /* --scound-color:#00C4B3; */
+}
+
+
+
+header.shadow {
+    background-color: var(--main-color, '') !important;
+    /* padding: 20px; */
+}
+
+.category {
+    background-color: var(--main-color, '') !important;
+    padding: 10px 0px;
+    margin: 20px 0px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #83e8df !important;
+    font-weight: bold;
+}
+
+.category .inside {
+    padding: 20px;
+}
+
+.category .inside p {
+    color: gray;
+}
+
+.category i {
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+
+
+}
+
+.category i:hover {
+    transform: scale(1.222, 1.222);
+}
+
+.listCategory i {
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.listCategory i:hover {
+    transform: scale(1.222, 1.222);
+}
+
+.form-group {
+    margin: 10px 0px;
+}
+
+.form-control {
+    margin: 10px 0px;
+
+}
+
+#showPassword{
+    color: rgb(160, 74, 74);
+}
+.min-h-screen{
+    min-height: auto !important;
+    /* padding: 20px 0px; */
+    padding-bottom: 20px;
+}
