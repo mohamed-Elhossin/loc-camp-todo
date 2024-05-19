@@ -23,6 +23,7 @@
                                 <p>
                                     {{ $item->description }}
                                 </p>
+                                <span>For : {{ $item->for_user }}</span>
                             </div>
                         </div>
                     </div>
