@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('for_user');
             $table->string('title');
             $table->string('description');
             $table->timestamps();

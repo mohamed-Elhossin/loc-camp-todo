@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Category Description </label>
-                        <textarea   rows="4"  type="text" name="description"
+                        <textarea rows="4" type="text" name="description"
                             class=" @error('description')
                         is-invalid
                     @enderror form-control"
@@ -43,6 +43,22 @@
                         @error('description')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="">Category User </label>
+                        <select type="text" name="user"
+                            class="form-control @error('user')
+                            is-invalid
+                        @enderror "
+                            placeholder="user">
+                            @foreach ($users as $item)
+                                <option value="{{ $item->name }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('user')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+
                     </div>
                     <div class="d-grid">
                         <button class="btn btn-info">Create </button>

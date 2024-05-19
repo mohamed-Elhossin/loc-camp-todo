@@ -15,7 +15,7 @@ class PasswordController extends Controller
     public function index($id)
     {
         $passwords = Password::where('category_id', '=', $id)
-            ->orderBy('status','desc')
+            ->orderBy('status', 'desc')
             // ->orderBy('created_at', 'desc')
             ->get();
 
@@ -69,10 +69,14 @@ class PasswordController extends Controller
     {
         $passwords =  Password::find($id);
         if ($passwords->status == 'wating') {
+            $passwords->status = 'In progress';
+            $passwords->save();
+            return redirect()->back()->with('done', "Change To  In progress");
+        } else if ($passwords->status == 'In progress') {
             $passwords->status = 'Done';
             $passwords->save();
             return redirect()->back()->with('done', "Change To  Done");
-        } else {
+        }else{
             $passwords->status = 'wating';
             $passwords->save();
             return redirect()->back()->with('done', "Change To  wating");

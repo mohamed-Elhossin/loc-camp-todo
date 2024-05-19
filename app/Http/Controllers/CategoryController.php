@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -13,7 +15,13 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+        $auth_name = Auth::user()->name;
+        if (Auth::user()->rule_id == 1) {
+            $categories = Category::all();
+        } else {
+            $categories = Category::where('for_user', $auth_name)->get();
+        }
+
         return view('dashboard', compact('categories'));
     }
     public function list()
@@ -27,7 +35,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        $users = User::all();
+
+        return view('categories.create', compact('users'));
     }
 
     /**
@@ -42,6 +52,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->title = $request->title;
         $category->description = $request->description;
+        $category->for_user = $request->user;
         $category->save();
         return redirect()->back()->with('done', "Creat Category Successfully");
     }

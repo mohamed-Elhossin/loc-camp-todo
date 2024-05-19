@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Create New Notes : {{ $category->title }}
+            Create New Tasks : {{ $category->title }}
         </h2>
     </x-slot>
 
@@ -20,7 +20,7 @@
                 <form action="{{ route('passwords.store', $category->id) }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="">Password Title </label>
+                        <label for="">Task Title </label>
                         <input type="text" name="title"
                             class="form-control @error('title')
                             is-invalid

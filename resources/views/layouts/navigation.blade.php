@@ -15,15 +15,20 @@
                     <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
                         dashboard
                     </x-nav-link>
-                    <x-nav-link :href="route('category.create')" :active="request()->routeIs('category.create')">
-                        Create Category
-                    </x-nav-link>
-                    <x-nav-link :href="route('category.list')" :active="request()->routeIs('category.list')">
-                        List Category
-                    </x-nav-link>
-                    <x-nav-link  :href="route('register')" :active="request()->routeIs('register')">
-                        Add Users
-                    </x-nav-link >
+                    @if (Auth::user()->rule_id == 1)
+                        <x-nav-link :href="route('category.create')" :active="request()->routeIs('category.create')">
+                            Create Category
+                        </x-nav-link>
+                        <x-nav-link :href="route('category.list')" :active="request()->routeIs('category.list')">
+                            List Category
+                        </x-nav-link>
+                        <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                            Add Users
+                        </x-nav-link>
+                        <x-nav-link :href="route('user.listUsers')" :active="request()->routeIs('user.listUsers')">
+                            listUsers
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

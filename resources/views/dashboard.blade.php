@@ -13,10 +13,10 @@
                             <div class="">
                                 <h6>
                                     {{ $item->title }}
-                                    <a href="{{ route('passwords.create', $item->id) }}"> <i title="add Password"
+                                    <a href="{{ route('passwords.create', $item->id) }}"> <i title="add Tasks"
                                             class="text-info mx-2 float-end fa-solid fa-plus"></i>
                                     </a>
-                                    <a href="{{ route('passwords.index', $item->id) }}"> <i title="view Passwords"
+                                    <a href="{{ route('passwords.index', $item->id) }}"> <i title="view Tasks"
                                             class="text-danger mx-2 float-end fa-solid fa-eye"></i></a>
                                 </h6>
                                 <hr>
