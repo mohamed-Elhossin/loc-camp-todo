@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Your Categories And Brand
+            Your Task Categories
         </h2>
     </x-slot>
     <div class="container">
@@ -32,8 +32,8 @@
                 </div>
             @empty
                 <div class="alert alert-info col-md-5 my-5 mx-auto">
-                    <h1>There are no data here</h1>
-                    <strong> <a href="{{ route('category.create') }}"> Add New Categories </a></strong>
+                    <h1>Empty Tasks </h1>
+                    {{-- <strong> <a href="{{ route('category.create') }}"> Add New Categories </a></strong> --}}
                 </div>
             @endforelse
 
