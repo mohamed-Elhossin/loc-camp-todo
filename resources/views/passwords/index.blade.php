@@ -24,7 +24,6 @@
                         <th> Title </th>
                         <th> Description </th>
                         <th> Status </th>
-
                         <th> Deadline </th>
                         <th colspan="3">Action</th>
                     </tr>
@@ -33,17 +32,20 @@
                             <td>{{ $loop->iteration }} </td>
                             <th>{{ $item->title }}</th>
                             <th>{{ $item->description }}</th>
-                            <th>{{ $item->deadline }}</th>
+
 
                             <th>
                                 <a onclick="confirm('sure ? ')" href="{{ route('passwords.edit', $item->id) }}">
                                     {{ $item->status }}
                                 </a>
                             </th>
+                            <th>{{ $item->deadline }}</th>
 
                             <th><a href="{{ route('passwords.showPassword', $item->id) }}"><i
                                         class="fa-solid fa-eye"></i>
                                 </a></th>
+
+
                             <th><a onclick="return confirm('are You Sure ?')"
                                     href="{{ route('passwords.destroy', $item->id) }}"><i title="delete"
                                         class="text-danger fa-solid fa-trash-can"></i></a></th>
