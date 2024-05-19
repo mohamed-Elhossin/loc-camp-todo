@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             List Notes for Add
-            
+
         </h2>
     </x-slot>
 
@@ -24,6 +24,8 @@
                         <th> Title </th>
                         <th> Description </th>
                         <th> Status </th>
+
+                        <th> Deadline </th>
                         <th colspan="3">Action</th>
                     </tr>
                     @foreach ($passwords as $item)
@@ -31,6 +33,8 @@
                             <td>{{ $loop->iteration }} </td>
                             <th>{{ $item->title }}</th>
                             <th>{{ $item->description }}</th>
+                            <th>{{ $item->deadline }}</th>
+
                             <th>
                                 <a onclick="confirm('sure ? ')" href="{{ route('passwords.edit', $item->id) }}">
                                     {{ $item->status }}

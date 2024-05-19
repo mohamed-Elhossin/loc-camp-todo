@@ -50,6 +50,7 @@ class PasswordController extends Controller
         $passwords->title = $request->title;
         $passwords->description =  $request->password;
         $passwords->category_id = $request->categoryId;
+        $passwords->deadline =       $request->deadline;
         $passwords->save();
         return redirect()->back()->with('done', "create  Successfully");
     }
@@ -76,7 +77,7 @@ class PasswordController extends Controller
             $passwords->status = 'Done';
             $passwords->save();
             return redirect()->back()->with('done', "Change To  Done");
-        }else{
+        } else {
             $passwords->status = 'wating';
             $passwords->save();
             return redirect()->back()->with('done', "Change To  wating");

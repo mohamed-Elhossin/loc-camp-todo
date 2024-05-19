@@ -9,5 +9,5 @@ class Password extends Model
 {
     use HasFactory;
     protected $table = "passwords";
-    protected $fillable=['title','password','category_id'];
+    protected $fillable = ['title', 'password', 'category_id', 'deadline'];
 }

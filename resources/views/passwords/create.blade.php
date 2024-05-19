@@ -48,6 +48,19 @@
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="">Task Title </label>
+                        <input type="text" name="deadline"
+                            class="form-control @error('deadline')
+                            is-invalid
+                        @enderror "
+                            placeholder="deadline">
+                        @error('deadline')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+
+                    </div>
+
                     <input type="hidden" value="{{ $category->id }}" name="categoryId">
                     <div class="d-grid">
                         <button class="btn btn-info">Create </button>
