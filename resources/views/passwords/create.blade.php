@@ -50,11 +50,18 @@
                     </div>
                     <div class="form-group">
                         <label for="">Task Title </label>
-                        <input type="text" name="deadline"
+                        <select type="text" name="deadline"
                             class="form-control @error('deadline')
                             is-invalid
                         @enderror "
                             placeholder="deadline">
+                            @for ($i = 1; $i < 10; $i++)
+                                <option value="{{ $i }}">{{ $i }} Day , Start :
+                                    {{ date('Y-m-d') }}
+                                </option>
+                            @endfor
+
+                        </select>
                         @error('deadline')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
