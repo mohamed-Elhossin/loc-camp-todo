@@ -56,7 +56,8 @@
                         @enderror "
                             placeholder="deadline">
                             @for ($i = 1; $i < 10; $i++)
-                                <option value="{{ $i }}">{{ $i }} Day , Start :
+                                <option value="{{ $i }} Day , Start :
+                                {{ date('Y-m-d') }}">{{ $i }} Day , Start :
                                     {{ date('Y-m-d') }}
                                 </option>
                             @endfor

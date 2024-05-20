@@ -49,7 +49,10 @@
                             <th><a onclick="return confirm('are You Sure ?')"
                                     href="{{ route('passwords.destroy', $item->id) }}"><i title="delete"
                                         class="text-danger fa-solid fa-trash-can"></i></a></th>
+                                        @if (Auth::user()->rule_id==1)
+                                        <th><a href="{{ route('passwords.edit', $item->id) }}">Edit </a></th>
 
+                                        @endif
                         </tr>
                     @endforeach
                 </table>
