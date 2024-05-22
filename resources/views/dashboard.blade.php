@@ -22,7 +22,15 @@
                                 <hr>
                                 <p>
                                     {{ $item->description }}
+
                                 </p>
+                                <hr>
+                                @foreach ($counts as $itemConut)
+                                    @if ($itemConut->id == $item->id)
+                                        Total : {{ $itemConut->all_tasks }}
+                                    @endif
+                                @endforeach
+
                                 <span>For : {{ $item->for_user }}</span>
                             </div>
                         </div>

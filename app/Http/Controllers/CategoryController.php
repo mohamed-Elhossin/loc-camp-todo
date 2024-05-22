@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -21,8 +22,21 @@ class CategoryController extends Controller
         } else {
             $categories = Category::where('for_user', $auth_name)->get();
         }
-
-        return view('dashboard', compact('categories'));
+        // SELECT * FROM `caregories_tasks_count`
+        $counts =     DB::table('categories')
+            ->leftJoin('passwords', 'categories.id', '=', 'passwords.category_id')
+            ->select(
+                'categories.id as id',
+                'categories.title as title',
+                DB::raw('COUNT(passwords.id) as all_tasks'),
+                DB::raw("SUM(CASE WHEN passwords.status = 'waiting' THEN 1 ELSE 0 END) as waiting_count"),
+                DB::raw("SUM(CASE WHEN passwords.status = 'done' THEN 1 ELSE 0 END) as done_count"),
+                DB::raw("SUM(CASE WHEN passwords.status = 'In progress' THEN 1 ELSE 0 END) as in_progress")
+            )
+            ->groupBy('categories.id', 'categories.title')
+            ->get();
+        // dd($counts);
+        return view('dashboard', compact('categories', 'counts'));
     }
     public function list()
     {

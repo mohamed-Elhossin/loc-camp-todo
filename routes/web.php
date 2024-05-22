@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::middleware('adminRule')->group(function () {
-        Route::get("users",[UserController::class,'index'])->name("user.listUsers");
+        Route::get("users", [UserController::class, 'index'])->name("user.listUsers");
         Route::prefix('category')->group(function () {
             Route::get("/", [CategoryController::class, 'index'])->name("category.index");
 
@@ -50,6 +50,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get("/showPassword/{id}", [PasswordController::class, 'showPassword'])->name("passwords.showPassword");
         Route::get("/list", [PasswordController::class, 'list'])->name("passwords.list");
         Route::get("/index/{id}", [PasswordController::class, 'index'])->name("passwords.index");
+
+        Route::get("/edit/{id}", [PasswordController::class, 'edit'])->name("passwords.edit");
         Route::middleware('adminRule')->group(function () {
             Route::get("/create/{id}", [PasswordController::class, 'create'])->name("passwords.create");
 
@@ -59,8 +61,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get("/{id}", [PasswordController::class, 'destroy'])->name("passwords.destroy");
         });
     });
-
-
 });
 
 
