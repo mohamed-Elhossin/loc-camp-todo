@@ -27,10 +27,17 @@
                                 <hr>
                                 @foreach ($counts as $itemConut)
                                     @if ($itemConut->id == $item->id)
-                                        Total : {{ $itemConut->all_tasks }}
+                                        <span class="text-bold"> Total : {{ $itemConut->all_tasks }}</span>
+                                        |
+                                        <span class="text-danger ms-2"> Waiting :
+                                            {{ $itemConut->waiting_count }}</span>
+                                        |
+                                        <span class="text-info mx-3"> In Progress : {{ $itemConut->in_progress }}</span>
+                                        |
+                                        <span class="text-success"> Done : {{ $itemConut->done_count }}</span>
                                     @endif
                                 @endforeach
-
+                                <br>
                                 <span>For : {{ $item->for_user }}</span>
                             </div>
                         </div>

@@ -23,18 +23,19 @@ class CategoryController extends Controller
             $categories = Category::where('for_user', $auth_name)->get();
         }
         // SELECT * FROM `caregories_tasks_count`
-        $counts =     DB::table('categories')
-            ->leftJoin('passwords', 'categories.id', '=', 'passwords.category_id')
-            ->select(
-                'categories.id as id',
-                'categories.title as title',
-                DB::raw('COUNT(passwords.id) as all_tasks'),
-                DB::raw("SUM(CASE WHEN passwords.status = 'waiting' THEN 1 ELSE 0 END) as waiting_count"),
-                DB::raw("SUM(CASE WHEN passwords.status = 'done' THEN 1 ELSE 0 END) as done_count"),
-                DB::raw("SUM(CASE WHEN passwords.status = 'In progress' THEN 1 ELSE 0 END) as in_progress")
-            )
-            ->groupBy('categories.id', 'categories.title')
-            ->get();
+        $counts = DB::table('caregories_tasks_count')->get();
+        //  DB::table('categories')
+        //     ->leftJoin('passwords', 'categories.id', '=', 'passwords.category_id')
+        //     ->select(
+        //         'categories.id as id',
+        //         'categories.title as title',
+        //         DB::raw('COUNT(passwords.id) as all_tasks'),
+        //         DB::raw("SUM(CASE WHEN passwords.status = 'waiting' THEN 1 ELSE 0 END) as waiting_count"),
+        //         DB::raw("SUM(CASE WHEN passwords.status = 'done' THEN 1 ELSE 0 END) as done_count"),
+        //         DB::raw("SUM(CASE WHEN passwords.status = 'In progress' THEN 1 ELSE 0 END) as in_progress")
+        //     )
+        //     ->groupBy('categories.id', 'categories.title')
+        //     ->get();
         // dd($counts);
         return view('dashboard', compact('categories', 'counts'));
     }
