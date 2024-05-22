@@ -50,14 +50,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get("/showPassword/{id}", [PasswordController::class, 'showPassword'])->name("passwords.showPassword");
         Route::get("/list", [PasswordController::class, 'list'])->name("passwords.list");
         Route::get("/index/{id}", [PasswordController::class, 'index'])->name("passwords.index");
-
         Route::get("/edit/{id}", [PasswordController::class, 'edit'])->name("passwords.edit");
         Route::middleware('adminRule')->group(function () {
             Route::get("/create/{id}", [PasswordController::class, 'create'])->name("passwords.create");
 
             Route::post("/", [PasswordController::class, 'store'])->name("passwords.store");
-            Route::get("/edit/{id}", [PasswordController::class, 'edit'])->name("passwords.edit");
-            Route::post("/{id}", [PasswordController::class, 'update'])->name("passwords.update");
+             Route::post("/{id}", [PasswordController::class, 'update'])->name("passwords.update");
             Route::get("/{id}", [PasswordController::class, 'destroy'])->name("passwords.destroy");
         });
     });
