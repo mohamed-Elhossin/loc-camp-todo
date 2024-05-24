@@ -7,7 +7,7 @@
     </x-slot>
 
 
-    <div class=" listCategory container mt-5 col-md-7">
+    <div class=" listCategory container mt-5 col-md-8">
         @if (Session::has('done'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>Notes</strong> {{ Session::get('done') }}.
@@ -36,7 +36,9 @@
 
                             <th>
                                 <a onclick="confirm('sure ? ')" href="{{ route('passwords.edit', $item->id) }}">
-                                    {{ $item->status }}
+
+                                      {{ $item->status }}
+
                                 </a>
                             </th>
                             <th>{{ $item->deadline }}</th>
@@ -49,10 +51,9 @@
                             <th><a onclick="return confirm('are You Sure ?')"
                                     href="{{ route('passwords.destroy', $item->id) }}"><i title="delete"
                                         class="text-danger fa-solid fa-trash-can"></i></a></th>
-                                        @if (Auth::user()->rule_id==1)
-                                        <th><a href="{{ route('passwords.edit', $item->id) }}">Edit </a></th>
-
-                                        @endif
+                            @if (Auth::user()->rule_id == 1)
+                                <th><a href="{{ route('passwords.edit', $item->id) }}"><i title="edit" class="fa-solid fa-pen-to-square"></i> </a></th>
+                            @endif
                         </tr>
                     @endforeach
                 </table>

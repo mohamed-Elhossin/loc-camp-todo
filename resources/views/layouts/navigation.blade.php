@@ -22,11 +22,14 @@
                         <x-nav-link :href="route('category.list')" :active="request()->routeIs('category.list')">
                             List Category
                         </x-nav-link>
+                        <x-nav-link :href="route('usersCategory')" :active="request()->routeIs('usersCategory')">
+                            User's Categories
+                        </x-nav-link>
                         <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
                             Add Users
                         </x-nav-link>
                         <x-nav-link :href="route('user.listUsers')" :active="request()->routeIs('user.listUsers')">
-                            listUsers
+                            list Users
                         </x-nav-link>
                     @endif
                 </div>
@@ -98,8 +101,15 @@
             <x-responsive-nav-link :href="route('category.list')" :active="request()->routeIs('category.list')">
                 List Category
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('usersCategory')" :active="request()->routeIs('usersCategory')">
+                User's Categories
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
                 Add Users
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('user.listUsers')" :active="request()->routeIs('user.listUsers')">
+                list Users
             </x-responsive-nav-link>
         </div>
 

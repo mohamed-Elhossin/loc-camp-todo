@@ -48,25 +48,19 @@
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="">Task Title </label>
-                        <select type="text" name="deadline"
-                            class="form-control @error('deadline')
-                            is-invalid
-                        @enderror "
-                            placeholder="deadline">
-                            @for ($i = 1; $i < 10; $i++)
-                                <option value="{{ $i }} Day , Start :
-                                {{ date('Y-m-d') }}">{{ $i }} Day , Start :
-                                    {{ date('Y-m-d') }}
-                                </option>
-                            @endfor
-
-                        </select>
-                        @error('deadline')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Start Date </label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Receive Date </label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
                     </div>
 
                     <input type="hidden" value="{{ $category->id }}" name="categoryId">

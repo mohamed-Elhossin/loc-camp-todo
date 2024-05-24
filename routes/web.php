@@ -24,6 +24,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [CategoryController::class, 'index'])->name("dashboard");
+    Route::get('/usersCategory', [CategoryController::class, 'usersCategory'])->name("usersCategory");
+    Route::get('/oneUserCategories/{id}', [CategoryController::class, 'oneUsersTasks'])->name("oneUserCategories");
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -59,35 +62,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get("/{id}", [PasswordController::class, 'destroy'])->name("passwords.destroy");
         });
     });
-});
-
-
-Route::get('/clear-cache', function() {
-    Artisan::call('cache:clear');
-    return 'Application cache cleared';
-});
-
-Route::get('/clear-config', function() {
-    Artisan::call('config:clear');
-    return 'Configuration cache cleared';
-});
-
-Route::get('/clear-route', function() {
-    Artisan::call('route:clear');
-    return 'Route cache cleared';
-});
-
-Route::get('/clear-view', function() {
-    Artisan::call('view:clear');
-    return 'View cache cleared';
-});
-
-Route::get('/clear-all', function() {
-    Artisan::call('cache:clear');
-    Artisan::call('config:clear');
-    Artisan::call('route:clear');
-    Artisan::call('view:clear');
-    return 'All caches cleared';
 });
 
 

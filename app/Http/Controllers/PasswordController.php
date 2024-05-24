@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Category;
 use App\Models\Password;
 use Illuminate\Http\Request;
@@ -50,7 +51,15 @@ class PasswordController extends Controller
         $passwords->title = $request->title;
         $passwords->description =  $request->password;
         $passwords->category_id = $request->categoryId;
-        $passwords->deadline =       $request->deadline;
+        $startDate = Carbon::parse($request->start_date);
+        $endDate = Carbon::parse($request->end_date);
+        $deadline = $endDate->diffInDays($startDate);
+
+
+        $passwords->from_date = $startDate;
+        $passwords->to_date =  $endDate;
+        $passwords->deadline = $deadline;
+        // dd($passwords);
         $passwords->save();
         return redirect()->back()->with('done', "create  Successfully");
     }
