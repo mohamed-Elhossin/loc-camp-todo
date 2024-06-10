@@ -78,7 +78,7 @@ class PasswordController extends Controller
     public function edit($id)
     {
         $passwords =  Password::find($id);
-        if ($passwords->status == 'wating') {
+        if ($passwords->status == 'waiting') {
             $passwords->status = 'In progress';
             $passwords->save();
             return redirect()->back()->with('done', "Change To  In progress");
@@ -87,9 +87,9 @@ class PasswordController extends Controller
             $passwords->save();
             return redirect()->back()->with('done', "Change To  Done");
         } else {
-            $passwords->status = 'wating';
+            $passwords->status = 'waiting';
             $passwords->save();
-            return redirect()->back()->with('done', "Change To  wating");
+            return redirect()->back()->with('done', "Change To  waiting");
         }
     }
 

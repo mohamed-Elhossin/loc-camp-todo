@@ -27,32 +27,41 @@
                                 <hr>
                                 @foreach ($counts as $itemConut)
                                     @if ($itemConut->id == $item->id)
+                                        @if ($itemConut->waiting_count == 0 && $itemConut->in_progress == 0)
+                                            <div class="border border-4 border-success p-3">
+                                            @else
+                                                <div class="border border-5 border-danger p-3">
+                                        @endif
                                         <span class="text-bold"> Total : {{ $itemConut->all_tasks }}</span>
                                         |
                                         <span class="text-danger ms-2"> Todo :
                                             {{ $itemConut->waiting_count }}</span>
                                         |
-                                        <span class="text-info mx-3"> In Progress : {{ $itemConut->in_progress }}</span>
+                                        <span class="text-info mx-3"> In Progress :
+                                            {{ $itemConut->in_progress }}</span>
                                         |
-                                        <span class="text-success"> Done : {{ $itemConut->done_count }}</span>
-                                    @endif
-                                @endforeach
-                                <br>
-                                <span>For : {{ $item->for_user }}</span>
+                                        <span class="text-success"> Done :
+                                            {{ $itemConut->done_count }}</span>
+
                             </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            @empty
-                <div class="alert alert-info col-md-5 my-5 mx-auto">
-                    <h1>Empty Tasks </h1>
-                    {{-- <strong> <a href="{{ route('category.create') }}"> Add New Categories </a></strong> --}}
-                </div>
-            @endforelse
-
+            @endif
+            @endforeach
+            <br>
+            <span>For : {{ $item->for_user }}</span>
         </div>
+    </div>
+    </div>
+
+
+    </div>
+@empty
+    <div class="alert alert-info col-md-5 my-5 mx-auto">
+        <h1>Empty Tasks </h1>
+        {{-- <strong> <a href="{{ route('category.create') }}"> Add New Categories </a></strong> --}}
+    </div>
+    @endforelse
+
+    </div>
     </div>
 
 </x-app-layout>
